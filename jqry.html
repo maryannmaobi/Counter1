@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+	<style>
+	   body {
+  text-align: center;
+  margin: 10px;
+}
+
+#icon {
+  margin: 0 0 10px;
+}
+
+.chosen-container {
+  text-align: left;
+	</style>
+</head>
+  <body>
+          <select data-placeholder="Choose a Project..." class="icon-select" style="width:350px;"
+          tabindex="2">
+          <option data-icon="fa-download">Project A</option>
+          <option data-icon="fa-cloud">Project B</option>
+          <option data-icon="fa-fighter-jet">Project C</option>
+          </select>
+</body>
+	<script src="jquery/jquery.min.js"></script>
+   <script>
+	$(".icon-select").chosenIcon({
+      disable_search_threshold: 10
+      });
+	</script>
+</html>

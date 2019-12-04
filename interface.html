@@ -10,17 +10,14 @@
 	
 <body>
  <nav class="shadow-sm mb-5" style="display: none" id="menuBar">
-		<span id="menu"  class="fa fa-align-justify shadow-sm text-white"></span>
+		<span id="menu"  c lass="fa fa-align-justify shadow-sm text-white"></span>
 		<span id="menu1" class="fa fa-align-justify shadow-sm"></span>
 		<span id="arrow" class="fa fa-arrow-left float-right mr-3 shadow-sm text-white" id="backArrow" onclick="backToMainPage()"></span>
 	</nav>
 	<div id="sidebar" class="shadow-sm">
 		<ul>
 			<li>
-				<a href="#" id="calculateButton">CALCULATE</a>
-			</li>
-				<li>
-				<a href="#">HISTORY</a>
+				<a href="#" id="calculateButton" >CALCULATE</a>
 			</li>
 				<li>
 				<a href="#" id="aboutButton">ABOUT</a>
@@ -32,7 +29,7 @@
 				<a href="#">HELP</a>
 			</li>
 				<li>
-				<a href="#">HISTORY</a>
+				<a href="#" id="histbtn">HISTORY</a>
 			</li>
 		</ul>
 	</div>
@@ -71,13 +68,13 @@
 					</div>
 -->
 					 
-<div class="input-group mb-3 rounded mt-5">
+<div class="input-group mb-3 rounded mt-5" style="transform(-28)">
   <div class="input-group-prepend">
     <span class="input-group-text fa fa-car-alt p-3 fa-1x text-white" onmouseup="countMe(event)" id="countNums" data-long-press-delay="2000" style="background:#0F0096 !important"> CAR</span>
   </div>
   <input type="text" class="form-control p-3 text-white allcounters" type="text" id="inlineCheckbox1" value="0" readonly onmouseup="countMe(event)" id="countNums" data-long-press-delay="2000" style="height: 73px;text-align: center; font-size: 40px;background:#0F0096 !important">
   <div class="input-group-append">
-    <span class="input-group-text fa fa-trash-alt p-3 fa-1x text-white" style="background:#0F0096 !important"></span>
+    <span class="input-group-text fa fa-minus p-3 fa-1x text-white" onClick="subDef2()" style="background:#0F0096 !important"></span>
   </div>
 </div>
 			
@@ -88,7 +85,7 @@
   </div>
   <input type="text" class="form-control p-3 text-white allcounters" type="text" id="inlineCheckbox2" value="0" readonly onmouseup="clickTocount(event)" id="countNume" data-long-press-delay="2000" style="height: 73px;text-align: center; font-size: 40px;background:#0F0096 !important">
   <div class="input-group-append">
-    <span class="input-group-text fa fa-trash-alt p-3 fa-1x text-white" style="background:#0F0096 !important"></span>
+    <span class="input-group-text fa fa-minus p-3 fa-1x text-white" onClick="subDef()" style="background:#0F0096 !important"></span>
   </div>
 </div>
 <!--
@@ -108,7 +105,12 @@
 -->
                
 				</div>
-					
+				<div style="width:100%" id="defaltDiv"></div>
+				<center>
+				<div class="btn-group mt-5 col-md-6 text-center" role="group" aria-label="Basic example">
+				    <button type="button" class="btn btn-danger btn-lg" onClick="clearall()">CLEAR COUNTER</button>
+				</div>
+				</center>	
 <!--		Car at Default Ends here-->
 				
 				<!--		Bike at Default Starts here-->
@@ -192,9 +194,12 @@
 			<div class="col-md-12">
 		  <header class="masthead d-flex">
     <div class="container text-center my-auto">
-      <h1 class="mb-5 text-white">LET'S CALCULATE</h1>
-        <button class="btn btn-dark">CALCULATE</button>
-		<input type="text" class="form-control form-control-sm mt-5" readonly>
+      <h1 class="mb-2 text-white">LET'S CALCULATE</h1>
+		<div class="mb-3" id="dispCntedvehi">
+		
+		</div>
+        <button class="btn btn-dark" onclick="calc()">CALCULATE</button>
+		<input type="text" class="form-control form-control-sm mt-5" style="font-size: 40px" id='showtot' readonly>
      </div>
     <div class="overlay"></div>
   </header>
@@ -211,7 +216,7 @@
 		  <header class="masthead d-flex">
     <div class="container text-center my-auto">
       <h1 class="mb-5 text-white">ABOUT THE APP</h1>
-		<p class="text-white" style="font-size:2em">This is an app made for transport Students in various universities and other purposes as wells....</p>
+		<p class="text-white" style="font-size:2em">This is an app made for transport Students in various universities and other purposes as well....</p>
        </div>
     <div class="overlay"></div>
   </header>
@@ -221,11 +226,40 @@
 		
 		<!--This takes you to about Page, it ends here-->
 		
+		
+<!-- History page starts here-->
+				
+		<div class="row" id="histPage" style="display: none"> 
+			<div class="col-md-12">
+		  <header class="masthead d-flex">
+			  
+    <div class="container text-center my-auto">
+		<h1 class="text-white mb-5">COUNTER HISTORY</h1>
+        <table class="table table-hover">
+  <thead>
+    <tr class="text-white" style="font-size: 20px">
+      <th scope="col">S/N</th>
+      <th scope="col">CATEGORIES</th>
+      <th scope="col">TIME STARTED</th>
+      <th scope="col">TIME ENDED</th>
+		<th scope="col">TOTAL</th>
+    </tr>
+  </thead>
+		</table>			
+       </div>
+    <div class="overlay"></div>
+  </header>
+				
+		</div>
+		</div>
+		
+<!-- History page ends here-->		
 	</div>
 	
 	
 <!--	Modal Box for Items and their  description Starts Here-->
 	<div class="modal fade" id="myModal" style="font-size: 20px">
+		<div id="scrolle">
 		<div class="modal-dialog modal-md p-3">
 			<div class="modal-content">
 				<div class="modal-header bg-secondary text-white">
@@ -239,7 +273,7 @@
 						<label for="input1">ITEM :</label>
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
-								<span class="input-group-text"><span class="fa fa-car-alt"></span></span>
+								<span class="input-group-text"><span id="car1" class="fa fa-car-alt"></span></span>
 							</div>
 							<input type="text" class="form-control form-control-sm" id="itemList" list="item1" placeholder="Type in your choice of vehicles">
 							</div>
@@ -254,26 +288,31 @@
 						    <option value="CAR">
 						</datalist>
 					</div>
+<!--
 					<div class="form-group">
 						<label for="input1">DESCRIPTION :</label>
 						<input type="text" class="form-control form-control-sm" id="item1">
 					</div>
 					
+-->
 						<div class="form-group" id="chooseAnyIcon">
 						<label for="input1">CHOOSE ANY ICON OF YOUR CHOICE :</label>
 <!--							Icon are been choosed here-->
-							<div id="chooseIcons">
-							 <ul>
-				  <li><a href=""><span class="fa fa-train"></span></a> Trailer</li>
-				    <li><a href=""><span class="fa fa-walking"></span></a> Walking</li>
-				   <li><a href=""><span class="fa fa-biking"></span></a> Bike</li>
-			      <li><a href=""><span class="fa fa-bicycle"></span></a> Bicycle</li>
-					<li><a href=""><span class="fa fa-car"></span></a> Car</li>	 
-		           <li><a href=""><span class="fa fa-bus-alt"></span></a> Bus</li>	
+							<div>
+							 <ul id="chooseIcons" >
+				  <li><a href=""><button id="car5" class="btn btn-success text-black-50" style="background:none"><span class="text-black-50 fa fa-train setIcon"></span></button></a> Trailer</li>
+				    <li><a href=""><button class="btn btn-success text-black-50" id="car5" style="background:none"><span class="fa fa-walking setIcon"></span></button></a> Walking</li>
+				   <li><a href=""><button id="car4" class="btn btn-success text-black-50" style="background:none"><span class="fa fa-biking setIcon"></span></button></a> Bike</li>
+			      <li><a href=""><button id="car3" class="btn btn-success text-black-50" style="background:none"><span class="fa fa-bicycle setIcon"></span></button></a> Bicycle</li>
+					<li><a href=""><button id="car1" class="btn btn-success text-black-50" style="background:none"><span class="fa fa-car setIcon"></span></button></a> Car</li>	 
+		           <li><a href=""><button id="car2" class="btn btn-success text-black-50" style="background:none"><span class="fa fa-bus-alt setIcon"></span></button></a> Bus</li>	
+								 
+				  <li><a href=""><button id="car6" class="btn btn-success text-black-50" style="background:none"><span class="fa fa-truck setIcon"></span></button></a> Truck</li>				 
 				</ul>
                    </div>
 
-			</div>			
+			</div>		
+<!--					<select id="select" name="threads-icon" class="fa-select"></select>-->
 				</div>
 				<div class="modal-footer">
 <!--					Button that triggers when the user finish with the description and item -->
@@ -282,6 +321,7 @@
 			</div>
 		</div>
 	</div>
+		</div>
 	
 	<!--	Modal Box for Items and their  description Ends Here-->
 
@@ -307,9 +347,10 @@
 	<!--	MOdal for Exit Page Ends here-->
 	
 <!--	Button that triggers the modal for item and their Description-->
-	<button id="add" style="display: none" class="btn shadow-sm border rounded-circle float-right m-3 text-white" data-toggle="modal" data-target="#myModal"><span class="fa fa-plus"></span></button>
+	<button id="add" style="display: none" data-position="fixed" class="btn shadow-sm border rounded-circle float-right m-3 text-white" data-toggle="modal" data-target="#myModal"><span class="fa fa-plus"></span></button>
 </body>
 	<script src="jquery/jquery.min.js"></script>
+      <script src="slide-and-swipe-menu-master/jquery.slideandswipe.min.js"></script>
 	<script src="src/long-press-event.js"></script>
      <script src="js/bootstrap.js"></script>
 	<script src="interface.js"></script>
