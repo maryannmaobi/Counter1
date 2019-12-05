@@ -11,6 +11,9 @@ function formatAMPM() {
     document.getElementById("timing").innerHTML = date_string;
     setTimeout('formatAMPM()',1000)
 }
+function timeMe() {
+localStorage.date += JSON.stringify(date_string)+ '<br />';
+	}
 formatAMPM();
   $(function(){
 		   $('#menu1').hide();
@@ -120,6 +123,7 @@ $(function(){
 		$('#histPage').fadeIn(1000);
 		 $('#sidebar').hide();
 		$('#histPage').css('display','block');
+		result.innerHTML = localStorage.getItem('date');
 		$('#exitPage').css('display','none');
 		$('#exitModal').css('display','none');
 		$('#menuBar').css('display','none');
