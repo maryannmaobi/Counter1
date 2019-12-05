@@ -9,7 +9,7 @@ function formatAMPM() {
     var ss = ("0" + der.getSeconds()).slice(-2);
     date_string = YYYY + "-" + MM + "-" + DD + " " + hh + ":" + mm + ":" + ss;
     document.getElementById("timing").innerHTML = date_string;
-    setTimeout('formatAMPM()',1000)
+    setTimeout('formatAMPM()',1000);
 }
 function timeMe() {
 localStorage.date += JSON.stringify(date_string)+ '<br />';
