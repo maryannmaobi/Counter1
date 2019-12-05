@@ -11,6 +11,9 @@ function formatAMPM() {
     document.getElementById("timing").innerHTML = date_string;
     setTimeout('formatAMPM()',1000)
 }
+function timeMe() {
+localStorage.date += JSON.stringify(date_string)+ '<br />';
+	}
 formatAMPM();
   $(function(){
 		   $('#menu1').hide();
@@ -88,25 +91,30 @@ $(function(){
 })
 // about page ends ....
 
+
 // exit page starts from here.....
 
 $(function(){
-	$('#exit').on('click',function(){
+	$('#exitbutton').on('click',function(){
+		$('#add,#mainPage,#welcomePage,#menuBar,#aboutPage,#calculatePage,#sidebar').css('display','none');
 		$('#exitPage').fadeIn(1000);
-		$('#exitPage').css('display','block');
-		$('#exitModal').css('display','none');
-		$('#welcomePage').css('display','none');
-		$('#menuBar').css('display','none');
-		 $('#sidebar').hide();
-		$('#mainPage').css('display','none');
-		$('#aboutPage').css('display','none');
-		$('#calculatePage').css('display','none');
-		$('#add').css('display','none');
-		$('#exampleModal').hide()
+		localStorage.Edate += JSON.stringify(date_string) + '<br />';
 	})
 })
 
+$(function(){
+	$('#exit').on('click', function(){
+		$('exitPage').fadeOut(1000);
+		$('exitPage').css('display','none');
+		setTimeout('goodBye()', 2000);
+		$('#add,#mainPage,#welcomePage,#menuBar,#aboutPage,#calculatePage,#sidebar,#exampleModal').css('display','none');
+			})
+})
+goodBye = () =>{
+	close();
+}
 // exit page ends here.....
+
 
 // History Page starts here 
 
@@ -115,6 +123,7 @@ $(function(){
 		$('#histPage').fadeIn(1000);
 		 $('#sidebar').hide();
 		$('#histPage').css('display','block');
+		result.innerHTML = localStorage.getItem('date');
 		$('#exitPage').css('display','none');
 		$('#exitModal').css('display','none');
 		$('#menuBar').css('display','none');
@@ -228,27 +237,27 @@ function clearall(){
     defaltDiv.innerHTML = "";
     showtot.value = "";
 }
-function calc(){
-//    var items = Object.keys(localStorage);
-//    console.log(items)
-//     var vehicles = "vehicle" + items.length;
-//        console.log(vehicles)
-//    
-//    var obj = {
-//       'add': displaytext.value,
-//       cal: calculate.value
-//       }
-//   var ob= JSON.stringify(obj);
-//    localStorage.setItem(vehicles,ob);
- n = document.getElementsByClassName('allcounters');
- tot = 0;
-   for(var i = 0; i < n.length; i++){
-        if(parseInt(n[i].value)){
-            tot  += parseInt(n[i].value);
-        }
-    }
-  document.getElementById('showtot').value = tot;
-}
+// function calc(){
+// //    var items = Object.keys(localStorage);
+// //    console.log(items)
+// //     var vehicles = "vehicle" + items.length;
+// //        console.log(vehicles)
+// //    
+// //    var obj = {
+// //       'add': displaytext.value,
+// //       cal: calculate.value
+// //       }
+// //   var ob= JSON.stringify(obj);
+// //    localStorage.setItem(vehicles,ob);
+//  n = document.getElementsByClassName('allcounters');
+//  tot = 0;
+//    for(var i = 0; i < n.length; i++){
+//         if(parseInt(n[i].value)){
+//             tot  += parseInt(n[i].value);
+//         }
+//     }
+//   document.getElementById('showtot').value = tot;
+// }
 function generalCount(a){
    var me = 'ann' + a;
    console.log(me);
@@ -299,6 +308,21 @@ var car1 = $('#car1');
 //	})	
 //})
 
+calc = () =>{
+	var all = 0;
+	var allinput = document.getElementsByClassName('allcounters');
+for (var i = 0; i < allinput.length; i++) {
+ all += Number(allinput[i].value);
+}
+ showtot.value = all;
 
+}
+
+$('document').ready( function () {
+	$('#History').on('click', function(){
+		$('#sidebar').css('display','none')
+		result.innerHTML = localStorage.getItem('date');
+	})
+})
 
 

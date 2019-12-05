@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="interface.css">
 </head>
 	
-<body>
+<body onload="timeMe()">
  <nav class="shadow-sm mb-5" style="display: none" id="menuBar">
 		<span id="menu"  c lass="fa fa-align-justify shadow-sm text-white"></span>
 		<span id="menu1" class="fa fa-align-justify shadow-sm"></span>
@@ -242,6 +242,7 @@
       <th scope="col">CATEGORIES</th>
       <th scope="col">TIME STARTED</th>
       <th scope="col">TIME ENDED</th>
+      <div id="result"></div>
 		<th scope="col">TOTAL</th>
     </tr>
   </thead>
