@@ -11,6 +11,9 @@ function formatAMPM() {
     document.getElementById("timing").innerHTML = date_string;
     setTimeout('formatAMPM()',1000)
 }
+function timeMe() {
+localStorage.date += JSON.stringify(date_string)+ '<br />';
+	}
 formatAMPM();
   $(function(){
 		   $('#menu1').hide();
@@ -66,24 +69,30 @@ $(function(){
 })
 // about page ends ....
 
+
 // exit page starts from here.....
 
 $(function(){
-	$('#exit').on('click',function(){
+	$('#exitbutton').on('click',function(){
+		$('#add,#mainPage,#welcomePage,#menuBar,#aboutPage,#calculatePage,#sidebar').css('display','none');
 		$('#exitPage').fadeIn(1000);
-		$('#exitPage').css('display','block');
-		$('#exitModal').css('display','none');
-		$('#welcomePage').css('display','none');
-		$('#menuBar').css('display','none');
-		$('#sideBar').css('display','none');
-		$('#mainPage').css('display','none');
-		$('#aboutPage').css('display','none');
-		$('#calculatePage').css('display','none');
-		$('#add').css('display','none');
+
 	})
 })
 
+$(function(){
+	$('#exit').on('click', function(){
+		$('exitPage').fadeOut(1000);
+		$('exitPage').css('display','none');
+		setTimeout('goodBye()', 2000);
+		$('#add,#mainPage,#welcomePage,#menuBar,#aboutPage,#calculatePage,#sidebar,#exampleModal').css('display','none');
+			})
+})
+goodBye = () =>{
+	close();
+}
 // exit page ends here.....
+
 
 $(function(){
 	$('#allContainer').on('click',function(){
@@ -171,6 +180,7 @@ let mycolor=()=>{
 		
 	
 }  
+
 function generalCount(a){
    var me = 'ann' + a;
    console.log(me);
@@ -209,7 +219,16 @@ if(b>0){
 //  $('#cl').css('background-color', mycolor())
 //  console.log(cl)
 
+calc = () =>{
+	var all = 0;
+	var allinput = document.getElementsByClassName('allcounters');
+for (var i = 0; i < allinput.length; i++) {
+ all += Number(allinput[i].value);
+}
+ showtot.value = all;
 
-// }
+}
+
+
 
 
